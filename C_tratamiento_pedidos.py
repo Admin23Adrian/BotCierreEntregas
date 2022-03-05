@@ -49,31 +49,46 @@ def zsd_toma(sesionsap, fecha_inicio, fecha_fin, nro_pedido):
           session.findById("wnd[0]/usr/subSBS_PARSEL:ZDMSD_TOMA_PEDIDO:1100/ctxtS_VBELN-LOW").SetFocus()
           session.findById("wnd[0]/usr/subSBS_PARSEL:ZDMSD_TOMA_PEDIDO:1100/ctxtS_VBELN-LOW").caretPosition = 7
           session.findById("wnd[0]").sendVKey(0)
-          session.findById("wnd[0]/usr/cntlCC_LISTAPED/shellcont/shell").currentCellRow = -1
-          session.findById("wnd[0]/usr/cntlCC_LISTAPED/shellcont/shell").selectColumn('STAT_ENTR_ICON') # Boton de Generar Entrega
-          session.findById("wnd[0]/usr/cntlCC_LISTAPED/shellcont/shell").contextMenu()
+          
+          # --> PRODUCCION
+          # session.findById("wnd[0]/usr/cntlCC_LISTAPED/shellcont/shell").currentCellRow = -1
+          # session.findById("wnd[0]/usr/cntlCC_LISTAPED/shellcont/shell").selectColumn('STAT_ENTR_ICON') # Boton de Generar Entrega
+          # session.findById("wnd[0]/usr/cntlCC_LISTAPED/shellcont/shell").contextMenu()
+
+          # --> QAS
+          # session.findById("wnd[0]/usr/cntlCC_LISTAPED/shellcont/shell").currentCellRow = -1
+          # session.findById("wnd[0]/usr/cntlCC_LISTAPED/shellcont/shell").selectColumn = "STAT_ENTR_ICON"
+
           # --> BTN DE FILTRO
-          session.findById("wnd[0]/usr/cntlCC_LISTAPED/shellcont/shell").selectContextMenuItem('&FILTER')
+          # session.findById("wnd[0]/usr/cntlCC_LISTAPED/shellcont/shell").selectContextMenuItem('&FILTER')
+          # session.findById("wnd[0]/usr/cntlCC_LISTAPED/shellcont/shell").pressToolbarButton = "&MB_FILTER"
 
           
           # --> :CONTINUO CON PROCESO ? NO DEVUELVE PEDIDO 
-          try:
-               session.findById("wnd[1]/usr/ssub%_SUBSCREEN_FREESEL:SAPLSSEL:1105/ctxt%DYN001-LOW").text = "@0A@"
-               session.findById("wnd[1]/tbar[0]/btn[0]").press()
-          except Exception as e:
-               print(f"No Devuelve Pedido: {nro_pedido}.")
-               logging.info(f"No Devuelve Pedido. | Pedido: {nro_pedido} | {e}")
-               session.findById("wnd[0]").sendVKey(0)
-               # hoja_excel[f"O{fila}"] = "No Devuelve Pedido."
-               # hoja_excel[f"P{fila}"] = "No Devuelve Pedido."
-               return
+          # try:
+          #      session.findById("wnd[0]/usr/cntlCC_LISTAPED/shellcont/shell").currentCellRow = -1
+          #      session.findById("wnd[0]/usr/cntlCC_LISTAPED/shellcont/shell").selectColumn("STAT_ENTR_ICON")
+          #      session.findById("wnd[0]/usr/cntlCC_LISTAPED/shellcont/shell").pressToolbarButton("&MB_FILTER")
+          #      session.findById("wnd[1]/usr/ssub%_SUBSCREEN_FREESEL:SAPLSSEL:1105/ctxt%%DYN001-LOW").text = "@0A@"
+          #      session.findById("wnd[1]/usr/ssub%_SUBSCREEN_FREESEL:SAPLSSEL:1105/ctxt%%DYN001-LOW").caretPosition = 4
+          #      session.findById("wnd[1]/tbar[0]/btn[0]").press()
+          #      session.findById("wnd[0]/usr/cntlCC_LISTAPED/shellcont/shell").currentCellColumn= "STAT_DISP_ICON"
+          #      session.findById("wnd[0]/usr/cntlCC_LISTAPED/shellcont/shell").selectedRows = "0"
+          # except Exception as e:
+          #      print(f"No Devuelve Pedido: {nro_pedido}.")
+          #      logging.info(f"No Devuelve Pedido. | Pedido: {nro_pedido} | {e}")
+          #      session.findById("wnd[0]").sendVKey(0)
+          #      # hoja_excel[f"O{fila}"] = "No Devuelve Pedido."
+          #      # hoja_excel[f"P{fila}"] = "No Devuelve Pedido."
+          #      return
           
           # --> :INTENTO GENERAR ENTREGA ? ENTREGA YA GENERADA
           try:
+               session.findById("wnd[0]/usr/cntlCC_LISTAPED/shellcont/shell").currentCellColumn = "STAT_DISP_ICON"
                session.findById("wnd[0]/usr/cntlCC_LISTAPED/shellcont/shell").selectedRows = "0"
                session.findById("wnd[0]/usr/cntlCC_LISTAPED/shellcont/shell").pressToolbarButton("FN_MODPED")
+               session.findById("wnd[0]/usr/tabsTABS/tabpTAB_PED/ssubTABS_SCA:ZDMSD_TOMA_PEDIDO:0101/cmbZSD_TOMA_CABEC-LIFSK").key = " "
                
-               # -------------------------------------------------------#
                # if idcliente == '30000012' or idcliente == '20000028':
                #      session.findById('wnd[0]/usr/tabsTABS/tabpTAB_ENT').Select()
                #      session.findById('wnd[0]/usr/tabsTABS/tabpTAB_ENT/ssubTABS_SCA:ZDMSD_TOMA_PEDIDO:0102/chkGS_ENTREGA-NO_SOLIC_DOC').SetFocus()
@@ -90,43 +105,59 @@ def zsd_toma(sesionsap, fecha_inicio, fecha_fin, nro_pedido):
                #      session.findById('wnd[0]/usr/tabsTABS/tabpTAB_ENT/ssubTABS_SCA:ZDMSD_TOMA_PEDIDO:0102/chkGS_ENTREGA-NO_SOLIC_DOC').Selected = True
                #      session.findById('wnd[0]/usr/tabsTABS/tabpTAB_PED').Select()
                #      session.findById('wnd[0]/usr/tabsTABS/tabpTAB_PED/ssubTABS_SCA:ZDMSD_TOMA_PEDIDO:0101/cmbZSD_TOMA_CABEC-LIFSK').Key = 'SR'
-               #---------------------------------------------------------#
+
 
                # --> BOTON GRABAR
-               session.findById("wnd[0]/tbar[0]/btn[11]").press = 'grabar'
+               # session.findById("wnd[0]/tbar[0]/btn[11]").press('grabar')
+               session.findById("wnd[0]/tbar[0]/btn[11]").press()
+               
+               
+               # session.findById("wnd[1]/tbar[0]/btn[0]").press()
+               # session.findById("wnd[0]/tbar[1]/btn[7]").press()
 
                # --> :INTENTO PRESIONAR BOTON ? ERROR EN BOTON1
                try:
-                    boton1 = session.findById("wnd[1]/usr/btnBUTTON_1").text
-                    session.findById("wnd[1]/usr/btnBUTTON_1").press()
+                    # boton1 = session.findById("wnd[1]/usr/btnBUTTON_1").text
+                    boton1 = session.findById("wnd[1]/usr/btnBUTTON_1").press()
+                    session.findById("wnd[1]/tbar[0]/btn[0]").press()
+                    # session.findById("wnd[0]/tbar[1]/btn[7]").press()
+                    # session.findById("wnd[1]/usr/btnBUTTON_1").press()
                
                # --> INTENTO MANEJAR ERROR EN BOTON 1
                except Exception as e:
-                    error_boton(sesionsap, nro_pedido, hoja_excel, fila)
-                    boton2 = session.findById("wnd[1]/usr/btnBUTTON_1").text
+                    # error_boton(sesionsap, nro_pedido)
+                    error_boton(sesionsap, nro_pedido, "s", "s")
+                    boton2 = session.findById("wnd[1]/usr/btnBUTTON_1").press()
                     session.findById("wnd[1]/usr/btnBUTTON_1").press()
                
                # --> INTENTO MANEJAR ERROR EN BOTON 2
                except Exception as e:
-                    error_boton(sesionsap, nro_pedido, hoja_excel, fila)
+                    # error_boton(sesionsap, nro_pedido, hoja_excel, fila)
+                    error_boton(sesionsap, nro_pedido, "s", "s")
                     boton3 = session.findById("wnd[1]/usr/btnBUTTON_1").text
                     session.findById("wnd[1]/usr/btnBUTTON_1").press()
                
                # --> INTENTO MANEJAR ERROR EN BOTON 3
                except Exception as e:
-                    error_boton(sesionsap, nro_pedido, hoja_excel, fila)
+                    # error_boton(sesionsap, nro_pedido, hoja_excel, fila)
+                    error_boton(sesionsap, nro_pedido, "s", "s")
                     boton4 = session.findById("wnd[1]/usr/btnBUTTON_1").text
                     session.findById("wnd[1]/usr/btnBUTTON_1").press()
 
                # --> INTENTO MANEJAR ERROR EN BOTON 4
                except Exception as e:
-                    error_boton(sesionsap, nro_pedido, hoja_excel, fila)
+                    # error_boton(sesionsap, nro_pedido, hoja_excel, fila)
+                    error_boton(sesionsap, nro_pedido, "s", "s")
                     session.findById("wnd[1]/tbar[0]/btn[0]").press()
                
+               # --> INTENTAR GENERAR ENTREGA
+               try:
+                    extraccion_comparacion_pedidos(sesionsap, nro_pedido, "hoja_excel", "fila")
                # --> ERROR EN AVISO = EXTRACCION_COMPARACION_PEDIDOS
                except Exception as e:
-                    extraccion_comparacion_pedidos(sesionsap, nro_pedido, hoja_excel, fila)
-
+                    print(f"{e}")
+          
+          
           # --> CON ENTREGA GENERADA
           except Exception as e:
                print(f"Excepcion: LA ENTREGA SE ENCUENTRA YA GENERADA | Pedido: {nro_pedido}")
@@ -170,5 +201,5 @@ def funcion_excel(ruta):
 
 
 # funcion_excel(rutas.RUTA_EXCEL)
-zsd_toma(0, "01.01.2020", "31.03.2022", "5461787")
+zsd_toma(0, "01.01.2020", "31.03.2022", "4476449")
 

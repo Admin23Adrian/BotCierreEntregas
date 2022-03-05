@@ -78,12 +78,12 @@ def extraccion_comparacion_pedidos(sesionsap, nro_pedido, hoja_excel, fila):
      try:
           print("Entrando en Excepcion ERROR AVISO/COMPARACION DE PEDIDOS.")
           mensaje_pie = session.findById("wnd[0]/sbar").text
-          # Cells(i, 15).Value = myText --> Cells(celda, columna) --> hoja[f"columna{fila}"].value = myText
-          pedido_mensaje_pie = mensaje_pie[7:]
+          # Cells(i, 15).Value = myText --> Cells(celda, columna) --> hoja[f"columna{fila}"] = myText
+          pedido_mensaje_pie = mensaje_pie[-7:]
 
           if pedido_mensaje_pie == nro_pedido:
                print(f"{pedido_mensaje_pie} es igual a {nro_pedido}.")
-               hoja_excel[f"O{fila}"] = "Cambio OK"
+               # hoja_excel[f"O{fila}"] = "Cambio OK"
                
                #--> LLAMAMOS A GENERAR ENTREGA <--#
                generar_entrega(0, nro_pedido, hoja_excel, fila, fecha_inicio, fecha_fin)
@@ -92,8 +92,8 @@ def extraccion_comparacion_pedidos(sesionsap, nro_pedido, hoja_excel, fila):
           else:
                print(f"{pedido_mensaje_pie} no es igual a {nro_pedido}.Cambio no OK Col-O")
                print(f"{pedido_mensaje_pie} no es igual a {nro_pedido}.Error en pedido - Entrega no generada Col-P")
-               hoja_excel[f"O{fila}"] = "Cambio NO OK"
-               hoja_excel[f"P{fila}"] = "Error en pedido - Entrega no generada"
+               # hoja_excel[f"O{fila}"] = "Cambio NO OK"
+               # hoja_excel[f"P{fila}"] = "Error en pedido - Entrega no generada"
                return
      
      except Exception as e:

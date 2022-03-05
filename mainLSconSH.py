@@ -11,6 +11,7 @@ import time
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 import os
 
+
 def entregas_sin_coordinar():
     user = getuser()
     hoy = datetime.datetime.now()
@@ -49,6 +50,7 @@ def entregas_sin_coordinar():
     year = new_date.year
 
     fechaLimite = f"{year}{month}{day}"
+    # fechaLimite = "20220304"
     print("---")
 
     conn=dbapi.connect(address="172.31.0.138",
@@ -71,7 +73,7 @@ def entregas_sin_coordinar():
     cursor.execute("SET SCHEMA SAPABAP1") 
     
     # ------------------------------------------- PEDIDOS PENDIENTES -------------------------------------------------------------#
-    bloqueos = ["WA", "PQ", "PE", "PR"]
+    bloqueos = ["PE", "PR"]
     l_bloqueos = tuple(bloqueos)
 
     clientes_excluir = ['60000006','60000122','60000110']

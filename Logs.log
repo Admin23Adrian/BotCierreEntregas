@@ -6,3 +6,4 @@
 04/03/2022 03:45:25 PM. No Devuelve Pedido. | Pedido: 4476449 | (-2147352567, 'Ocurrió una excepción.', (619, 'SAP Frontend Server', 'The control could not be found by id.', 'C:\\Program Files (x86)\\SAP\\FrontEnd\\SAPgui\\sapfront.HLP', 393215, 0), None). Linea 65
 04/03/2022 04:00:07 PM. EXCEPCION EN MODULO PRINCIPAL Property '<unknown>.selectColumn' can not be set.. Linea 149
 04/03/2022 04:05:25 PM. No Devuelve Pedido. | Pedido: 4476449 | Property '<unknown>.selectColumn' can not be set.. Linea 76
+07/03/2022 06:31:12 PM. No Devuelve Pedido. | Pedido: 5461787 | (-2147352567, 'Ocurrió una excepción.', (619, 'SAP Frontend Server', 'The control could not be found by id.', 'C:\\Program Files (x86)\\SAP\\FrontEnd\\SAPgui\\sapfront.HLP', 393215, 0), None). Linea 64

@@ -1,0 +1,33 @@
+
+
+WHATSAPP - VITA
+Pedido
+PE A PL - Para intentar cerrar entrega
+PL A "NUEVO - WA ENTREGA CON ERROR" - Para pedidos que no pude generar entrega (1)
+
+Entrega
+PL A SR - Si el dispone es un afiliado y no es de los 4 clientes que no piden receta. Si es de alguno de los clientes queda PL
+
+------------------------------------------------------------------
+
+MOBILE
+Pedido
+PR A "NUEVO-MOBILE FINALIZADO" (con copia a PL) - Para intentar cerrar entrega
+"NUEVO-MOBILE FINALIZADO" A "NUEVO-MOBILE ENTREGA CON ERROR" - Para pedidos que no pude generar entrega
+
+Entrega
+"NUEVO-MOBILE FINALIZADO A SR - Si el dispone es un afiliado y no es de los 4 clientes que no piden receta. Si es de alguno de los clientes queda "NUEVO-MOBILE FINALIZADO"
+
+
+####################################################################################
+Para Romi/Eli:
+	* Nuevo bloqueo VITA:
+	  - WA ENTREGA CON ERROR (Para pedidos que no pude generar entrega)
+	
+	* Nuevo Bloqueo Mobile:
+	  - MOBILE FINALIZADO" (con copia a PL) - Para intentar cerrar entrega
+	  - MOBILE ENTREGA CON ERROR" - (Para pedidos que no pude generar entrega)
+####################################################################################
+
+
+1 control room + 3 creator + 2 runner
